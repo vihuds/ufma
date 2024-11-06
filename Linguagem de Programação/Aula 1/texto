@@ -1,1 +1,231 @@
+/* 
+Dada uma temperatura em graus Fahrenheit, informe o valor 
+correspondente em graus Celsius. [Dica: C = (F – 32) ∗ (5 / 9)].
+*/
 
+#include <stdio.h>
+
+int main(void){
+  float tempF,tempC;
+
+  printf("Temperatura em ºF: ");
+  scanf("%f", &tempF);
+  
+  tempC = (tempF - 32)/1.8;
+  printf("%.2fºF equivalem a %.2fºC.\n", tempF, tempC);
+
+  return 0;
+}
+
+
+/*
+Dadas as medidas dos catetos de um triângulo retângulo,
+informe a medida da hipotenusa. [Dica: para calcular a raiz 
+quadrada use a função sqrt(), definida na biblioteca math.h].
+*/
+
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+  
+  int catA, catB, hip;
+  printf("cateto A: ");
+  scanf("%d", &catA);
+  printf("cateto B: ");
+  scanf("%d", &catB);
+
+  hip = sqrt(catA*catA + catB*catB);
+  printf("A hipotenusa eh igual a: %d \n", hip);
+
+  return 0;
+}
+
+/*
+Desenvolver um algoritmo que leia um número inteiro e verifique se o
+número é divisível por 5 e por 3 ao mesmo tempo.
+*/
+
+#include <stdio.h>
+
+int main(){
+  
+  int num;
+  printf("Numero: ");
+  scanf("%d", &num);
+
+  if (num % 5 == 0){
+    if (num % 3 == 0)
+      printf("%d eh divisivel por 5 e por 3 ao mesmo tempo.\n", num);
+    else
+      printf("%d eh divisivel apenas por 5.\n", num);
+    
+  }else if (num % 3 == 0){
+     if (num % 5 == 0)
+       printf("%d eh divisivel por 5 e por 3 ao mesmo tempo.\n", num);
+     else
+       printf("%d eh divisivel apenas por 3.\n", num);
+
+  }else{
+    printf("%d nao eh divisivel nem por 5 e nem por 3.\n", num);
+  }
+
+  return 0;
+}
+
+/*
+Desenvolver um algoritmo para ler um número “x” e calcular e imprimir
+o valor de “y” de acordo com as condições abaixo:
+   y = x , se x < 1
+   y = 0 , se x = 1
+   y = x2, se x > 1
+*/
+#include <stdio.h>
+
+int main(){
+  
+  int x;
+
+  printf("Digite um numero: ");
+  scanf("%d", &x);
+
+  if (x < 1)
+    printf("y = %d\n", x);
+  else if (x == 1)
+    printf("y = 0\n");
+  else
+    printf("y = %d\n", x*x);
+  return 0;
+}
+
+/*
+Fazer um programa em C que dado três valores A, B e C, verificar se eles
+formam um triângulo ou não. Caso sim, informar se é triângulo equilátero,
+isósceles ou escaleno.
+Condição para ser triângulo: a soma do comprimento de dois lados deve ser
+maior (ou igual) ao comprimento do terceiro lado.
+• Tipos de triângulos:
+• triângulo equilátero: todos os lados são iguais
+• triângulo isósceles: dois lados iguais
+• triângulo escaleno: todos os lados são diferentes
+*/
+
+#include <stdio.h>
+
+int main(){
+  
+  int a, b, c;
+  printf("Digite os lados a, b e c: ");
+  scanf("%d %d %d", &a, &b, &c);
+  if (a+b>c && a+c>b && b+c>a){
+    if(a == b && b == c)
+      printf("Os lados %d, %d e %d formam um T. Equilatero\n", a, b, c);
+    else if((a==b)||(a==c)||(b==c)) 
+      printf("Os lados %d, %d e %d formam um T. Isosceles\n", a, b, c);
+    else   
+      printf("Os lados %d, %d e %d formam um T. Escaleno\n", a, b, c);
+    
+  }else{
+    printf("Os lados %d, %d e %d nao formam um triangulo.\n", a, b, c);
+  }
+
+  return 0;
+}
+
+
+/*
+Faça um programa em C que identifique se a raiz quadrada de um
+dado número inteiro X é inteira, ou seja, se X é um número quadrado
+perfeito.
+*/
+
+#include <stdio.h>
+#include <math.h>
+int main(void){
+  
+  float num, raiz, raiz_inteira;
+  printf("Numero: ");
+  scanf("%f", &num);
+  
+  raiz = sqrt(num);
+  raiz_inteira = floor(raiz);
+  
+  printf("raiz: %.2f\n", raiz);
+  printf("raiz inteira: %.2f\n", raiz_inteira);
+
+  if(raiz == raiz_inteira){
+    printf("eh um quadrado perfeito.\n");
+  }else{
+    printf("nao eh um quadrado perfeito.\n");
+  }
+
+  return 0;
+}
+
+
+/*
+Cada caracter é representado por um byte, e de acordo com o alfabeto
+ASCII um byte entre 00000000 e 01111111.
+No computador, cada caractere está representado em uma faixa de
+valores, que para nós pode ser visualizada como uma faixa de inteiros.
+Escreva um programa em C para checar se um caractere é uma letra,
+dígito ou caractere especial.
+DICA: façam o seguinte teste: printf("%d", 'a');
+*/   
+
+#include <stdio.h>
+
+int main(){
+  
+  char caractere;
+
+  printf("Digite um caractere: ");
+  scanf("%c", &caractere);
+
+  if((caractere >= 'A' && caractere <= 'Z') || (caractere >= 'a' && caractere <= 'z'))
+    printf("%c: é uma letra.\n", caractere);
+  else if (caractere >= '0' && caractere <= '9')
+    printf("%c: é um dígito.\n", caractere);
+  else
+    printf("%c: é um caractere especial.\n", caractere);
+  return 0;
+}
+
+/*
+Usando o switch, crie uma calculadora simples (operações de +,-,*, e
+/). O usuário digita uma expressão na forma valor1 oper valor2, e
+o seu programa deve mostrar o resultado da expressão.
+*/
+
+#include<stdio.h>
+
+int main(){
+  
+  float valor1, valor2;
+  char op;
+
+  printf("[valor1] [operação] [valor2]\n");
+  scanf("%f %c %f", &valor1, &op, &valor2);
+
+  switch(op){
+    case '+': 
+      printf("%.2f+%.2f=%.2f\n", valor1, valor2, valor1+valor2); 
+      break;
+    case '-': 
+      printf("%.2f-%.2f=%.2f\n", valor1, valor2, valor1-valor2); 
+      break;
+    case '*': 
+      printf("%.2f*%.2f=%.2f\n", valor1, valor2, valor1*valor2); 
+      break;
+    case '/':
+     if(valor2!=0)
+       printf("%.2f/%.2f=%.2f\n", valor1, valor2, valor1/valor2);
+     else
+      printf("Não existe divisão por zero.\n"); 
+     break;
+    default:
+      printf("Operador inválido!\n");   
+  }
+
+  return 0;
+}
